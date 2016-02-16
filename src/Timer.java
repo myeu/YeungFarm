@@ -21,6 +21,7 @@ public class Timer {
     }
 
     public void addTimeSubscriber(TimeListener listener) {
+        subscribers.add(listener);
     }
 
     public void incrementTime() {
@@ -34,13 +35,17 @@ public class Timer {
         if (minute == MINUTES_IN_HOUR) {
             minute = 0;
             addHour();
+        } else {
+            minute++;
         }
     }
 
     private void addHour() {
         if (hour == HOURS_IN_DAY) {
             hour = 0;
-            day += 1;
+            day++;
+        } else {
+            hour++;
         }
     }
 }

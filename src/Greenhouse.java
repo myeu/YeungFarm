@@ -5,6 +5,8 @@ public class Greenhouse implements TimeListener {
 
     @Override
     public void onNewTime(int day, int hour, int minute) {
+        //System.out.println("<Time> " + day + " " + hour + ":" + minute);
 
     }
+
 }
