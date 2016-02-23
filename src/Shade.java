@@ -7,6 +7,7 @@ public class Shade {
 
     public Shade() {
         shading = false;
+        masterOff = true;
     }
 
     public void cover() {

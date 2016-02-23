@@ -21,7 +21,11 @@ public class Greenhouse implements TimeListener {
         trays = new ArrayList<Tray>();
 
         Lamp lamp = new Lamp();
+        lamp.setPower(true);
+
         Shade shade = new Shade();
+        shade.setPower(true);
+
         LightSensor lightSensor = new LightSensor(sun, lamp, shade, setPointDLI);
         timer.addTimeSubscriber(lightSensor);
 

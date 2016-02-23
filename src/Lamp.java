@@ -7,7 +7,7 @@ public class Lamp {
 
     public Lamp() {
         on = false;
-        masterOff = false;
+        masterOff = true;
     }
 
     public double getPAR() {

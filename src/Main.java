@@ -30,11 +30,16 @@ public class Main {
         double initTemp = 70;
         InternalTempSimulator internalTempSimulator = new InternalTempSimulator(initTemp);
         externalTempSimulator.addTempSubscriber(internalTempSimulator);
+        timer.addTimeSubscriber(internalTempSimulator);
 
         HVAC hvac = new HVAC();
         hvac.setPower(true);
+        hvac.addSubscriber(internalTempSimulator);
+        timer.addTimeSubscriber(hvac);
+
         Thermostat thermostat = new Thermostat(hvac);
         g1.addThermostat(thermostat);
+        internalTempSimulator.addSubscriber(thermostat);
 
         for (int i = 0; i < MINUTES; i++) {
             timer.incrementTime();

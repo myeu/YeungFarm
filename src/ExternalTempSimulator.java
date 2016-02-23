@@ -76,10 +76,11 @@ public class ExternalTempSimulator implements TimeListener{
             }
         }
 
-        if ((minute % 10) == 0) {
+//        simulateTemp(hour);
+        if ((minute % 10) == 5) {
             simulateTemp(hour);
             //changeTemp(currentTempInF);
-            //System.out.printf("Day %02d  Hour %02d  Outside: %.2f F\n", day, hour, currentTempInF);
+            //System.out.printf("Day %02d  Hour %02d  Outside: %.2f F ", day, hour, currentTempInF);
         }
     }
 
