@@ -1,5 +1,5 @@
 /**
- * Created by marisayeung on 2/15/16.
+ * Created by Marisa Yeung
  */
 public class Plant implements TimeListener {
     @Override

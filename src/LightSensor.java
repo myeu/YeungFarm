@@ -1,5 +1,5 @@
 /**
- * Created by marisayeung on 2/15/16.
+ * Created by Marisa Yeung
  *
  * consider using PPF instead of PAR, since PPFD is whats actually what a PAR meter measures
  *    PPFD is Photosynthetic Photon Flux Density

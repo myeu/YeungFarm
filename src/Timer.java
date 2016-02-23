@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Created by marisayeung on 2/15/16.
+ * Created by Marisa Yeung
  */
 public class Timer {
     int MINUTES_IN_HOUR = 59;
