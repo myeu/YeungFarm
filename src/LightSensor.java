@@ -55,7 +55,7 @@ public class LightSensor implements TimeListener{
     public void onNewTime(int day, int hour, int minute) {
         // Reset Daily light integral for a new day
         if (hour == 23 && minute == 59) {
-            System.out.printf("Day %02d  DLI: %02.2f  Sun: %.2f  Shade: %.2f  Lamp: %.2f\n", day, DLI, totalSun, totalShade, totalLamp);
+            //System.out.printf("Day %02d  DLI: %02.2f  Sun: %.2f  Shade: %.2f  Lamp: %.2f\n", day, DLI, totalSun, totalShade, totalLamp);
             DLI = 0.0;
             totalSun = 0.0;
             totalShade = 0.0;

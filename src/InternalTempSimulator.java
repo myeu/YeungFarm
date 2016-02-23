@@ -32,4 +32,8 @@ public class InternalTempSimulator implements ExternalTempListener, HVACListener
             listener.onNewInternalTemp(currentTemp);
         }
     }
+
+    public void addSubscriber(InternalTempListener listener) {
+        subscribers.add(listener);
+    }
 }

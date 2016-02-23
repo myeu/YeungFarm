@@ -35,4 +35,8 @@ public class Greenhouse implements TimeListener {
         return setPointDLI;
     }
 
+    public void addThermostat(Thermostat thermostat) {
+
+    }
+
 }
