@@ -46,10 +46,10 @@ public class Sun implements TimeListener {
         }
 
 
-        // after about half a year, switch season
+        /* after about half a year, switch season
         if (season == WINTER && (day % 180) == 0) {
             season = SUMMER;
-        }
+        }*/
     }
 
     private void generatePAR() {

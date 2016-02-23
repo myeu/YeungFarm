@@ -26,4 +26,8 @@ public class Tray implements TimeListener{
     public void releaseSolution(int day, int hour, int minute) {
         //System.out.println("<Time> " + day + " " + hour + ":" + minute + " <Tray " + id + "> Solution released");
     }
+
+    public int getId() {
+        return id;
+    }
 }

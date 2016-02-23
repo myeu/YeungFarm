@@ -11,11 +11,17 @@ public class Main {
         Sun sun = new Sun();
         timer.addTimeSubscriber(sun);
 
-        Greenhouse g1 = new Greenhouse(timer, sun, 1, 18);
+        int numberOfTrays = 1;
+        int dailyLightInterval = 18;
+        Greenhouse g1 = new Greenhouse(timer, sun, numberOfTrays, dailyLightInterval);
         timer.addTimeSubscriber(g1);
+        System.out.println(g1.getSetPointDLI() + "");
 
         int releaseInterval = 20;
-        Tray t1 = new Tray(1, releaseInterval);
+        int id = 1;
+        Tray t1 = new Tray(id, releaseInterval);
+        System.out.println(t1.getId() + "");
+        g1.addTray(t1);
         timer.addTimeSubscriber(t1);
 
         for (int i = 0; i < MINUTES; i++) {

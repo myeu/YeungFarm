@@ -3,13 +3,16 @@
  */
 public class Shade {
     private boolean shading;
+    private boolean masterOff;
 
     public Shade() {
         shading = false;
     }
 
     public void cover() {
-        shading = true;
+        if (!masterOff) {
+            shading = true;
+        }
     }
 
     public void unCover() {
@@ -25,6 +28,15 @@ public class Shade {
             return 0.35;
         } else {
             return 0.0;
+        }
+    }
+
+    public void setPower(boolean setting) {
+        if (setting) {
+            masterOff = false;
+        } else {
+            shading = false;
+            masterOff = true;
         }
     }
 }
