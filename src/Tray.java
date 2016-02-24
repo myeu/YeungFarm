@@ -6,6 +6,8 @@ import java.util.Random;
  * Created by Marisa Yeung
  */
 public class Tray implements TimeListener{
+    static double OPTIMAL_PH = 6.3;
+
     int id;
     Reservoir reservoir;
     Random r = new Random();
@@ -19,9 +21,12 @@ public class Tray implements TimeListener{
     public Tray(int newId) {
         id = newId;
         nutrientSolutionRequirement = 100;
-        reservoir = new Reservoir(6.3, nutrientSolutionRequirement);
+        reservoir = new Reservoir(OPTIMAL_PH, nutrientSolutionRequirement);
+
         plants = new ArrayList<Plant>();
         createPlants(15);
+
+        needsNutrientRelease = false;
     }
 
     @Override
@@ -47,15 +52,14 @@ public class Tray implements TimeListener{
             if (reservoir.isWaterLow()) {
                 needsWater = true;
             }
+            // Simulate pH changes
+            if (r.nextInt(6) == 1) {
+                reservoir.changePH();
+            }
         }
 
         // Every hour
         if (minute == 30) {
-            // Simulate pH changes
-            if (r.nextInt(8) == 1) {
-                reservoir.changePH();
-            }
-
             // Add water if its still not at MAX
             if (needsWater) {
                 needsWater = reservoir.addWater();
@@ -67,6 +71,15 @@ public class Tray implements TimeListener{
             if (reservoir.getNutrientConcentration() < (nutrientSolutionRequirement - Reservoir.NUTRIENT_STEP)) {
 //                System.out.println("Adding to Nutrient soln: " + reservoir.getNutrientConcentration());
                 reservoir.addNutrients();
+            }
+
+            double pHSample = reservoir.getpH();
+            if (pHSample < (OPTIMAL_PH - .35)) {
+                System.out.println("pH will be upped: " + pHSample);
+                reservoir.pHUp();
+            } else if (pHSample > (OPTIMAL_PH + .35)) {
+                System.out.println("pH will be downed: " + pHSample);
+                reservoir.pHDown();
             }
         }
 

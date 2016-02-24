@@ -60,9 +60,9 @@ public class Reservoir {
     public void changePH() {
         // Randomly choose which direction to adjust the pH
         if (s.nextBoolean()) {
-            pH -= 0.2;
+            pH -= 0.25;
         } else {
-            pH += 0.2;
+            pH += 0.25;
         }
     }
 
@@ -101,7 +101,7 @@ public class Reservoir {
         double addAmount = 20 + waterVolume;
         if (addAmount < WATER_MAX) {
             waterVolume = addAmount;
-            System.out.println("water added. Water: " + waterVolume);
+//            System.out.println("water added. Water: " + waterVolume);
             return true;
         } else {
             return false;
