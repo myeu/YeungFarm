@@ -1,7 +1,13 @@
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 /**
  * Created by Marisa Yeung
  */
-public class Main {
+public class Main extends Application {
     public static void main(String[] args) {
         int DAYS = 30;
         int MINUTES = (DAYS * 60 * 24);
@@ -44,5 +50,15 @@ public class Main {
         for (int i = 0; i < MINUTES; i++) {
             timer.incrementTime();
         }
+
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("gui/control_panel.fxml"));
+        primaryStage.setTitle("Yeung Farm");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
     }
 }
