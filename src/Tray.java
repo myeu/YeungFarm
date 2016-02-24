@@ -10,18 +10,24 @@ public class Tray implements TimeListener{
     Reservoir reservoir;
     Random r = new Random();
     List<Plant> plants;
+
     boolean needsWater;
+
+    double nutrientSolutionRequirement;
+    boolean needsNutrientRelease;
 
     public Tray(int newId) {
         id = newId;
-        reservoir = new Reservoir(6.3, 5.0);
+        nutrientSolutionRequirement = 100;
+        reservoir = new Reservoir(6.3, nutrientSolutionRequirement);
         plants = new ArrayList<Plant>();
-        createPlants(2);
+        createPlants(15);
     }
 
     @Override
     public void onNewTime(int day, int hour, int minute) {
 
+//        20 days from start
         if (day == 20 && hour == 12 && minute == 0) {
             for (Plant plant : plants) {
                 plant.stopGrowing();
@@ -35,8 +41,9 @@ public class Tray implements TimeListener{
             }
         }*/
 
-        if ((hour % 12) == 0 && minute == 2) {
-            // Check water levels at start of each day
+//        four times a day
+        if ((hour % 6) == 0 && minute == 2) {
+            // Check water levels
             if (reservoir.isWaterLow()) {
                 needsWater = true;
             }
@@ -52,6 +59,14 @@ public class Tray implements TimeListener{
             // Add water if its still not at MAX
             if (needsWater) {
                 needsWater = reservoir.addWater();
+                if (!needsWater) {
+                    System.out.println("water is good");
+                }
+            }
+
+            if (reservoir.getNutrientConcentration() < (nutrientSolutionRequirement - Reservoir.NUTRIENT_STEP)) {
+//                System.out.println("Adding to Nutrient soln: " + reservoir.getNutrientConcentration());
+                reservoir.addNutrients();
             }
         }
 

@@ -19,12 +19,18 @@ public class Plant  {
     }
 
     public void nourish() {
-        reservoir.useNutrients(0.01 * size);
-        reservoir.useWater(0.006 * size);
+        if (growing) {
+            reservoir.useNutrients(0.1);
+            reservoir.useWater(0.006 * size);
+        } else {
+            reservoir.useNutrients(0.05);
+            reservoir.useWater(0.004 * size);
+        }
+
 
         if (growing) {
             if (r.nextInt(14) == 1) {
-                size += 1;
+                size += 0.5;
 //            System.out.println(id + " growing " + size);
             }
         }

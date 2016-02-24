@@ -1,4 +1,3 @@
-import org.omg.CORBA.MARSHAL;
 
 import java.util.Random;
 
@@ -7,12 +6,20 @@ import java.util.Random;
  */
 public class Reservoir {
 
-    double WATER_MAX = 100;
+    static double NUTRIENT_STEP = 5.0;
+
+    double WATER_MAX = 400;
 
     double pH;
     double nutrientConcentration;
     double waterVolume;
     Random s = new Random();
+
+    /*
+
+        Nutrient
+
+     */
 
     public Reservoir(double pH, double nutrientConcentration) {
         this.pH = pH;
@@ -28,8 +35,8 @@ public class Reservoir {
         changeNutrients(false, nutrients);
     }
 
-    public void addNutrients(double nutrients) {
-        changeNutrients(true, nutrients);
+    public void addNutrients() {
+        changeNutrients(true, NUTRIENT_STEP);
     }
 
     synchronized public void changeNutrients(boolean up, double nutrients) {
@@ -39,6 +46,12 @@ public class Reservoir {
             nutrientConcentration -= nutrients;
         }
     }
+
+    /*
+
+        Acidity
+
+     */
 
     public double getpH() {
         return pH;
@@ -63,6 +76,12 @@ public class Reservoir {
         pH -= .2;
     }
 
+    /*
+
+        Water levels
+
+     */
+
     // TODO: check if there is 0 water?
     public void useWater(double waterUsed) {
         waterVolume -= waterUsed;
@@ -70,7 +89,7 @@ public class Reservoir {
     }
 
     public boolean isWaterLow() {
-        if (waterVolume < 40) {
+        if (waterVolume < 250) {
             System.out.println("water is low");
             return true;
         } else {
@@ -79,7 +98,7 @@ public class Reservoir {
     }
 
     public boolean addWater() {
-        double addAmount = 10 + waterVolume;
+        double addAmount = 20 + waterVolume;
         if (addAmount < WATER_MAX) {
             waterVolume = addAmount;
             System.out.println("water added. Water: " + waterVolume);
