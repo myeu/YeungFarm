@@ -20,10 +20,10 @@ public class Thermostat implements TimeListener, InternalTempListener {
     public void onNewInternalTemp(double tempInF) {
         if (hvac.isHeatOn() && (tempInF >= (currentSetPoint + 0.9))) {
             hvac.turnHeatOff();
-            System.out.printf("HVAC Off  min: %02d  inside: %.2f\n", minute, tempInF);
+//            System.out.printf("HVAC Off  min: %02d  inside: %.2f\n", minute, tempInF);
         } else if (!hvac.isHeatOn() && (tempInF < currentSetPoint)) {
             hvac.turnHeatOn();
-            System.out.printf("HVAC On   min: %02d  inside: %.2f\n", minute, tempInF);
+//            System.out.printf("HVAC On   min: %02d  inside: %.2f\n", minute, tempInF);
 
         }
     }

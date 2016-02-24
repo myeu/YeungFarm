@@ -57,6 +57,7 @@ public class ExternalTempSimulator implements TimeListener{
     @Override
     public void onNewTime(int day, int hour, int minute) {
         if (hour == 0 && minute == 0) {
+            System.out.println("Day " + day);
             Random r = new Random();
             dayTempInF = MIN[DAY] + (MAX[DAY] - MIN[DAY]) * r.nextDouble();
             nightTempInF = MIN[NIGHT] + (MAX[NIGHT] - MIN[NIGHT]) * r.nextDouble();

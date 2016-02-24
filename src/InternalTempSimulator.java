@@ -50,7 +50,7 @@ public class InternalTempSimulator implements ExternalTempListener, HVACListener
     @Override
     public void onNewTime(int day, int hour, int minute) {
         if ((minute % 10) == 0) {
-            System.out.printf("Day %02d  Hour %02d  Outside: %.2f F  Inside: %.2f\n", day, hour, currentExternalTemp, currentTempInF);
+//            System.out.printf("Day %02d  Hour %02d  Outside: %.2f F  Inside: %.2f\n", day, hour, currentExternalTemp, currentTempInF);
         }
     }
 }

@@ -3,7 +3,7 @@
  */
 public class Main {
     public static void main(String[] args) {
-        int DAYS = 1;
+        int DAYS = 30;
         int MINUTES = (DAYS * 60 * 24);
 
         Timer timer = new Timer();
@@ -17,9 +17,8 @@ public class Main {
         timer.addTimeSubscriber(g1);
         System.out.println(g1.getSetPointDLI() + "");
 
-        int releaseInterval = 20;
         int id = 1;
-        Tray t1 = new Tray(id, releaseInterval);
+        Tray t1 = new Tray(id);
         System.out.println(t1.getId() + "");
         g1.addTray(t1);
         timer.addTimeSubscriber(t1);
