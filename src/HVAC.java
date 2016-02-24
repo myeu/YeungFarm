@@ -35,13 +35,13 @@ public class HVAC implements TimeListener{
     public void turnHeatOn() {
         if (!masterOff) {
             heatOn = true;
-            System.out.println("HVAC On");
+//            System.out.println("HVAC On");
         }
     }
 
     public void turnHeatOff() {
         heatOn = false;
-        System.out.println("HVAC Off");
+//        System.out.println("HVAC Off");
     }
 
     public void addSubscriber(HVACListener listener) {

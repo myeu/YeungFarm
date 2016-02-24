@@ -3,7 +3,7 @@
  */
 public class Main {
     public static void main(String[] args) {
-        int DAYS = 2;
+        int DAYS = 1;
         int MINUTES = (DAYS * 60 * 24);
 
         Timer timer = new Timer();
@@ -40,6 +40,7 @@ public class Main {
         Thermostat thermostat = new Thermostat(hvac);
         g1.addThermostat(thermostat);
         internalTempSimulator.addSubscriber(thermostat);
+        timer.addTimeSubscriber(thermostat);
 
         for (int i = 0; i < MINUTES; i++) {
             timer.incrementTime();

@@ -31,7 +31,7 @@ public class InternalTempSimulator implements ExternalTempListener, HVACListener
 
     synchronized private void changeTemp(double tempInF, boolean modulate) {
         if (modulate) {
-            double modulation = (tempInF - currentTempInF) / 8;
+            double modulation = (tempInF - currentTempInF) / 20;
             currentTempInF += modulation;
         } else {
             currentTempInF = tempInF;
